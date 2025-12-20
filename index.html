@@ -1,555 +1,205 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>YouTube Services Test – Kostenloser Quick-Check</title>
-    <meta name="description"
-        content="Kostenloser Quick-Check für deinen YouTube-Kanal: Analyse, Empfehlungen und ein klarer nächster Schritt in 48 Stunden." />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>youtubaeren</title>
+
+    <!-- Tailwind CSS (CDN for quick start). For production, build Tailwind into your CSS. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Separate CSS file for your custom styles (and/or your built Tailwind output). -->
+    <link rel="stylesheet" href="./styles.css" />
+
+    <!--
+			If you want your *separate* CSS file to include Tailwind via a build step,
+			create styles.css with the following (requires Tailwind build tooling):
+
+				@tailwind base;
+				@tailwind components;
+				@tailwind utilities;
+		-->
+
     <style>
-        :root {
-            --bg: #0b1220;
-            --card: #111a2e;
-            --muted: #93a4c7;
-            --text: #eaf0ff;
-            --brand: #7c5cff;
-            --brand2: #2ee59d;
-            --danger: #ff4d6d;
-            --line: #223154;
-            --shadow: 0 18px 50px rgba(0, 0, 0, .35);
-            --radius: 18px;
-            --max: 1120px;
-            --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        body {
-            margin: 0;
-            font-family: var(--font);
-            background: radial-gradient(1200px 600px at 15% 10%, rgba(124, 92, 255, .20), transparent 60%),
-                radial-gradient(900px 500px at 85% 15%, rgba(46, 229, 157, .15), transparent 55%),
-                var(--bg);
-            color: var(--text);
-            line-height: 1.45;
-        }
-
-        a {
-            color: inherit
-        }
-
-        .wrap {
-            max-width: var(--max);
-            margin: 0 auto;
-            padding: 28px 20px 70px;
-        }
-
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 14px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            letter-spacing: .2px;
-        }
-
-        .badge {
-            padding: 6px 10px;
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .nav {
-            display: flex;
-            gap: 16px;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .nav a {
-            opacity: .9;
-            text-decoration: none
-        }
-
-        .nav a:hover {
-            opacity: 1;
-            text-decoration: underline
-        }
-
-        .hero {
-            display: grid;
-            grid-template-columns: 1.1fr .9fr;
-            gap: 26px;
-            align-items: center;
-            margin-top: 34px;
-        }
-
-        @media (max-width: 940px) {
-            .hero {
-                grid-template-columns: 1fr;
-            }
-
-            .nav {
-                display: none;
-            }
-        }
-
-        .h-title {
-            font-size: 46px;
-            line-height: 1.05;
-            margin: 0 0 14px;
-        }
-
-        @media (max-width: 520px) {
-            .h-title {
-                font-size: 38px;
-            }
-        }
-
-        .h-sub {
-            color: var(--muted);
-            font-size: 16px;
-            margin: 0 0 18px;
-            max-width: 58ch;
-        }
-
-        .pill-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 16px 0 24px;
-        }
-
-        .pill {
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            padding: 8px 12px;
-            font-size: 13px;
-            color: var(--muted);
-            background: rgba(255, 255, 255, .03);
-        }
-
-        .cta-row {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 16px;
-            border-radius: 14px;
-            border: 1px solid var(--line);
-            background: rgba(255, 255, 255, .04);
-            color: var(--text);
-            text-decoration: none;
-            box-shadow: var(--shadow);
-        }
-
-        .btn.primary {
-            background: linear-gradient(135deg, var(--brand), #a177ff);
-            border-color: transparent;
-        }
-
-        .btn:hover {
-            transform: translateY(-1px);
-        }
-
-        .fine {
-            color: var(--muted);
-            font-size: 12.5px;
-            margin-top: 10px;
-        }
-
-        .card {
-            background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-        }
-
-        .card-h {
-            padding: 18px 18px 0;
-        }
-
-        .card-b {
-            padding: 18px;
-        }
-
-        .grid2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        @media (max-width: 520px) {
-            .grid2 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        label {
-            display: block;
-            font-size: 12px;
-            color: var(--muted);
-            margin: 0 0 6px;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px 12px;
-            border-radius: 12px;
-            border: 1px solid var(--line);
-            background: rgba(0, 0, 0, .22);
-            color: var(--text);
-            outline: none;
-        }
-
-        textarea {
-            min-height: 92px;
-            resize: vertical
-        }
-
-        .form-row {
-            margin-top: 12px;
-        }
-
-        .form-actions {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 14px;
-        }
-
-        .submit {
-            cursor: pointer;
-            width: 100%;
-            padding: 12px 14px;
-            border-radius: 14px;
-            border: 0;
-            background: linear-gradient(135deg, var(--brand2), #6df2c4);
-            font-weight: 700;
-        }
-
-        .submit:hover {
-            filter: brightness(1.02)
-        }
-
-        .hint {
-            font-size: 12px;
-            color: var(--muted)
-        }
-
-        .note {
-            border-top: 1px solid var(--line);
-            padding: 14px 18px;
-            color: var(--muted);
-            font-size: 12.5px;
-            background: rgba(0, 0, 0, .12);
-        }
-
-        section {
-            margin-top: 44px;
-        }
-
-        .section-title {
-            font-size: 22px;
-            margin: 0 0 14px;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-
-        @media (max-width: 940px) {
-            .features {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .feat {
-            padding: 16px;
-        }
-
-        .feat h3 {
-            margin: 0 0 6px;
-            font-size: 16px;
-        }
-
-        .feat p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-
-        @media (max-width: 940px) {
-            .steps {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .step {
-            padding: 16px;
-        }
-
-        .num {
-            display: inline-flex;
-            width: 30px;
-            height: 30px;
-            border-radius: 10px;
-            align-items: center;
-            justify-content: center;
-            background: rgba(124, 92, 255, .18);
-            border: 1px solid rgba(124, 92, 255, .35);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        footer {
-            margin-top: 52px;
-            color: var(--muted);
-            font-size: 13px;
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .legal a {
-            text-decoration: none;
-            opacity: .9
-        }
-
-        .legal a:hover {
-            text-decoration: underline;
-            opacity: 1
+        /* Ensure main content stays above the canvas */
+        #app {
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
 
-<body>
-    <div class="wrap">
-        <header>
-            <div class="logo">
-                <span
-                    style="display:inline-flex;width:34px;height:34px;border-radius:12px;align-items:center;justify-content:center;background:rgba(124,92,255,.18);border:1px solid rgba(124,92,255,.35)">▶️</span>
-                <span>ChannelBoost</span>
-                <span class="badge">YouTube Service Test</span>
-            </div>
-            <nav class="nav">
-                <a href="#leistungen">Leistungen</a>
-                <a href="#ablauf">Ablauf</a>
-                <a href="#faq">FAQ</a>
-            </nav>
+<body class="min-h-dvh bg-slate-950 text-slate-100">
+
+    <main id="app" class="mx-auto flex min-h-dvh max-w-6xl flex-col place-items-center gap-12 px-8">
+        <header class="text-center py-24">
+            <h1 class="text-3xl font-bold tracking-tight sm:text-5xl">
+                Are you a content creator?
+            </h1>
+            <p class="mt-3 text-sm text-slate-300 sm:text-base">Great. We'll help you get more views and subscribers.
+                Grow faster with our tools.
+            </p>
         </header>
 
-        <div class="hero">
-            <div>
-                <h1 class="h-title">Kostenloser Quick-Check für deinen YouTube-Kanal</h1>
-                <p class="h-sub">
-                    In einem kurzen Test analysieren wir deinen Kanal (Content, Packaging, SEO & Wachstumshebel)
-                    und liefern dir konkrete, umsetzbare Empfehlungen — ohne Bullshit, ohne Verpflichtung.
-                </p>
+        <div class="flex w-full flex-wrap justify-center gap-8">
+            <section
+                class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.34rem)] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm">
+                <div class="flex h-full flex-col justify-between gap-4">
+                    <div>
+                        <h2 class="text-xl font-semibold tracking-tight text-slate-100">Community Manager</h2>
+                        <div class="mt-3 h-px w-full bg-white/10"></div>
+                        <ul class="mt-4 space-y-2 text-sm text-slate-400">
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>One tool. Total community control.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Auto-post for every upload.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Know what viewers want—fast.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Spot trends. Start conversations.</span>
+                            </li>
+                        </ul>
+                    </div>
 
-                <div class="pill-row">
-                    <span class="pill">✓ 5–10 klare Optimierungen</span>
-                    <span class="pill">✓ Fokus: Titel, Thumbnails, Struktur</span>
-                    <span class="pill">✓ Optional: Editing & Strategie</span>
-                    <span class="pill">✓ Antwort innerhalb 48h</span>
+                    <a class="self-center inline-flex w-fit items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+                        href="#">
+                        More info...
+                    </a>
                 </div>
+            </section>
 
-                <div class="cta-row">
-                    <a class="btn primary" href="#test">Jetzt kostenlosen Test anfragen</a>
-                    <a class="btn" href="#leistungen">Was ist enthalten?</a>
+            <section
+                class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.34rem)] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm">
+                <div class="flex h-full flex-col justify-between gap-4">
+                    <div>
+                        <h2 class="text-xl font-semibold tracking-tight text-slate-100">AI Video Idea Generator</h2>
+                        <div class="mt-3 h-px w-full bg-white/10"></div>
+                        <ul class="mt-4 space-y-2 text-sm text-slate-400">
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>End creator's block forever.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Get fresh, trending ideas.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Tailored to your niche.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Boost engagement and views.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a class="self-center inline-flex w-fit items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+                        href="#">
+                        More info...
+                    </a>
                 </div>
-                <div class="fine">Hinweis: Wir unterstützen ausschließlich regelkonforme YouTube-Strategien (keine
-                    Fake-Views/Abos).</div>
-            </div>
+            </section>
 
-            <div class="card" id="test">
-                <div class="card-h">
-                    <h2 style="margin:0 0 6px; font-size:18px;">Test anfragen</h2>
-                    <p style="margin:0 0 10px; color:var(--muted); font-size:13.5px;">
-                        Trage kurz die Infos ein — wir melden uns mit einer Mini-Analyse und einem nächsten Schritt.
-                    </p>
+            <section
+                class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.34rem)] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm">
+                <div class="flex h-full flex-col justify-between gap-4">
+                    <div>
+                        <h2 class="text-xl font-semibold tracking-tight text-slate-100">Agentic Cutter</h2>
+                        <div class="mt-3 h-px w-full bg-white/10"></div>
+                        <ul class="mt-4 space-y-2 text-sm text-slate-400">
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Create short videos within the blink of an eye.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Let AI extract the most important parts from your longer videos.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Perfect for TikTok, Instagram Reels, YouTube Shorts, and more.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a class="self-center inline-flex w-fit items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+                        href="#">
+                        More info...
+                    </a>
                 </div>
+            </section>
 
-                <form class="card-b" id="leadForm">
-                    <div class="grid2">
-                        <div>
-                            <label for="name">Name</label>
-                            <input id="name" name="name" placeholder="Max Mustermann" required />
-                        </div>
-                        <div>
-                            <label for="email">E-Mail</label>
-                            <input id="email" name="email" type="email" placeholder="max@mail.de" required />
-                        </div>
+            <section
+                class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.34rem)] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm">
+                <div class="flex h-full flex-col justify-between gap-4">
+                    <div>
+                        <h2 class="text-xl font-semibold tracking-tight text-slate-100">Thumbnail Generator</h2>
+                        <div class="mt-3 h-px w-full bg-white/10"></div>
+                        <ul class="mt-4 space-y-2 text-sm text-slate-400">
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Eye-catching thumbnails in seconds.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>AI-powered designs tailored to your content.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Boost click rates effortlessly.</span>
+                            </li>
+                        </ul>
                     </div>
-
-                    <div class="form-row">
-                        <label for="channel">YouTube-Kanal (Link)</label>
-                        <input id="channel" name="channel" placeholder="https://www.youtube.com/@deinkanal" required />
-                    </div>
-
-                    <div class="grid2 form-row">
-                        <div>
-                            <label for="goal">Ziel</label>
-                            <select id="goal" name="goal" required>
-                                <option value="" selected disabled>Bitte wählen…</option>
-                                <option>Mehr Views (Packaging & SEO)</option>
-                                <option>Mehr Abonnenten (Content Strategy)</option>
-                                <option>Bessere Retention (Editing & Struktur)</option>
-                                <option>Monetarisierung / Positionierung</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="niche">Nische</label>
-                            <input id="niche" name="niche" placeholder="z. B. Fitness, Gaming, Finance…" />
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <label for="msg">Kurzbeschreibung (optional)</label>
-                        <textarea id="msg" name="msg"
-                            placeholder="Was läuft gut, was nervt dich, welche Videos sind wichtig?"></textarea>
-                    </div>
-
-                    <div class="form-actions">
-                        <button class="submit" type="submit">Kostenlosen Test anfragen</button>
-                        <div class="hint">Kein Spam. Abmeldung jederzeit.</div>
-                    </div>
-                </form>
-
-                <div class="note" id="formNote">
-                    Nach dem Absenden öffnet sich dein E-Mail-Programm (oder du bindest später ein echtes
-                    Formular-Backend an).
+                    <a class="self-center inline-flex w-fit items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+                        href="#">
+                        More info...
+                    </a>
                 </div>
-            </div>
+            </section>
+
+            <section
+                class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.34rem)] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm">
+                <div class="flex h-full flex-col justify-between gap-4">
+                    <div>
+                        <h2 class="text-xl font-semibold tracking-tight text-slate-100">Data Analyst</h2>
+                        <div class="mt-3 h-px w-full bg-white/10"></div>
+                        <ul class="mt-4 space-y-2 text-sm text-slate-400">
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Deep insights into your channel's performance.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Identify growth opportunities.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                                <span>Optimize content strategy with data-driven decisions.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a class="self-center inline-flex w-fit items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+                        href="#">
+                        More info...
+                    </a>
+                </div>
+            </section>
         </div>
 
-        <section id="leistungen">
-            <h2 class="section-title">Was im Test enthalten ist</h2>
-            <div class="features">
-                <div class="card feat">
-                    <h3>Packaging-Review</h3>
-                    <p>Titel/Thumbnail-Feedback, Hook-Check, klare Vorschläge für A/B-Varianten.</p>
-                </div>
-                <div class="card feat">
-                    <h3>SEO & Struktur</h3>
-                    <p>Beschreibung/Keywords, Kapitel, Playlists, interne Verlinkung, Upload-Rhythmus.</p>
-                </div>
-                <div class="card feat">
-                    <h3>Wachstumshebel</h3>
-                    <p>Konkrete nächste Schritte für die nächsten 14 Tage: Ideen, Prioritäten, Roadmap.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="ablauf">
-            <h2 class="section-title">So läuft’s ab</h2>
-            <div class="steps">
-                <div class="card step">
-                    <div class="num">1</div>
-                    <h3 style="margin:0 0 6px;">Anfrage</h3>
-                    <p style="margin:0; color:var(--muted);">Du schickst Kanal-Link + Ziel. Dauert 60 Sekunden.</p>
-                </div>
-                <div class="card step">
-                    <div class="num">2</div>
-                    <h3 style="margin:0 0 6px;">Quick-Analyse</h3>
-                    <p style="margin:0; color:var(--muted);">Wir prüfen Kanal, Top-Videos und schnelle Fixes.</p>
-                </div>
-                <div class="card step">
-                    <div class="num">3</div>
-                    <h3 style="margin:0 0 6px;">Ergebnis</h3>
-                    <p style="margin:0; color:var(--muted);">Du bekommst klare Empfehlungen + optionales Angebot.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq">
-            <h2 class="section-title">FAQ</h2>
-            <div class="features">
-                <div class="card feat">
-                    <h3>Kostet das wirklich nichts?</h3>
-                    <p>Der Quick-Check ist kostenlos. Wenn du danach Hilfe willst, machen wir ein optionales Angebot.
-                    </p>
-                </div>
-                <div class="card feat">
-                    <h3>Wie schnell meldet ihr euch?</h3>
-                    <p>In der Regel innerhalb von 48 Stunden (werktags).</p>
-                </div>
-                <div class="card feat">
-                    <h3>Welche Services bietet ihr an?</h3>
-                    <p>Strategie, Thumbnails, Editing-Guidelines, SEO-Optimierung, Content-Planung (regelkonform).</p>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <div>©️ <span id="year"></span> ChannelBoost</div>
-            <div class="legal">
-                <a href="#" onclick="alert('Platzhalter: Impressum/Datenschutz einfügen'); return false;">Impressum</a>
-                ·
-                <a href="#" onclick="alert('Platzhalter: Datenschutz einfügen'); return false;">Datenschutz</a>
-            </div>
-        </footer>
-    </div>
+        <footer class="text-xs text-slate-400">&copy; <span id="year"></span> you2bears</footer>
+    </main>
 
     <script>
-        // Jahr setzen
-        document.getElementById("year").textContent = new Date().getFullYear();
-
-        // Simple "no-backend" Form: öffnet Mail-Client mit vorausgefüllter Anfrage.
-        // Später ersetzen: fetch() zu eurem Backend (z. B. Formspree, Netlify Forms, HubSpot, own API)
-        const form = document.getElementById("leadForm");
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const data = Object.fromEntries(new FormData(form).entries());
-
-            const subject = encodeURIComponent("YouTube Service Test Anfrage");
-            const body = encodeURIComponent(
-                `Name: ${data.name}\n` +
-                `E-Mail: ${data.email}\n` +
-                `Kanal: ${data.channel}\n` +
-                `Ziel: ${data.goal}\n` +
-                `Nische: ${data.niche || "-"}\n\n` +
-                `Beschreibung:\n${data.msg || "-"}\n`
-            );
-
-            // TODO: Zieladresse anpassen
-            const to = "hello@euredomain.de";
-            window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-
-            document.getElementById("formNote").textContent =
-                "Danke! Wenn sich kein Mailfenster geöffnet hat, prüfe bitte deinen Standard-Mailclient oder nutze später ein Formular-Backend.";
-        });
+        document.getElementById('year').textContent = String(new Date().getFullYear());
     </script>
 </body>
 
