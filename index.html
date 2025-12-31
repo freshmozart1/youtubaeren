@@ -1,556 +1,462 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>YouTube Services Test – Kostenloser Quick-Check</title>
-    <meta name="description"
-        content="Kostenloser Quick-Check für deinen YouTube-Kanal: Analyse, Empfehlungen und ein klarer nächster Schritt in 48 Stunden." />
-    <style>
-        :root {
-            --bg: #0b1220;
-            --card: #111a2e;
-            --muted: #93a4c7;
-            --text: #eaf0ff;
-            --brand: #7c5cff;
-            --brand2: #2ee59d;
-            --danger: #ff4d6d;
-            --line: #223154;
-            --shadow: 0 18px 50px rgba(0, 0, 0, .35);
-            --radius: 18px;
-            --max: 1120px;
-            --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        body {
-            margin: 0;
-            font-family: var(--font);
-            background: radial-gradient(1200px 600px at 15% 10%, rgba(124, 92, 255, .20), transparent 60%),
-                radial-gradient(900px 500px at 85% 15%, rgba(46, 229, 157, .15), transparent 55%),
-                var(--bg);
-            color: var(--text);
-            line-height: 1.45;
-        }
-
-        a {
-            color: inherit
-        }
-
-        .wrap {
-            max-width: var(--max);
-            margin: 0 auto;
-            padding: 28px 20px 70px;
-        }
-
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 14px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            letter-spacing: .2px;
-        }
-
-        .badge {
-            padding: 6px 10px;
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .nav {
-            display: flex;
-            gap: 16px;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .nav a {
-            opacity: .9;
-            text-decoration: none
-        }
-
-        .nav a:hover {
-            opacity: 1;
-            text-decoration: underline
-        }
-
-        .hero {
-            display: grid;
-            grid-template-columns: 1.1fr .9fr;
-            gap: 26px;
-            align-items: center;
-            margin-top: 34px;
-        }
-
-        @media (max-width: 940px) {
-            .hero {
-                grid-template-columns: 1fr;
-            }
-
-            .nav {
-                display: none;
-            }
-        }
-
-        .h-title {
-            font-size: 46px;
-            line-height: 1.05;
-            margin: 0 0 14px;
-        }
-
-        @media (max-width: 520px) {
-            .h-title {
-                font-size: 38px;
-            }
-        }
-
-        .h-sub {
-            color: var(--muted);
-            font-size: 16px;
-            margin: 0 0 18px;
-            max-width: 58ch;
-        }
-
-        .pill-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 16px 0 24px;
-        }
-
-        .pill {
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            padding: 8px 12px;
-            font-size: 13px;
-            color: var(--muted);
-            background: rgba(255, 255, 255, .03);
-        }
-
-        .cta-row {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 16px;
-            border-radius: 14px;
-            border: 1px solid var(--line);
-            background: rgba(255, 255, 255, .04);
-            color: var(--text);
-            text-decoration: none;
-            box-shadow: var(--shadow);
-        }
-
-        .btn.primary {
-            background: linear-gradient(135deg, var(--brand), #a177ff);
-            border-color: transparent;
-        }
-
-        .btn:hover {
-            transform: translateY(-1px);
-        }
-
-        .fine {
-            color: var(--muted);
-            font-size: 12.5px;
-            margin-top: 10px;
-        }
-
-        .card {
-            background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-        }
-
-        .card-h {
-            padding: 18px 18px 0;
-        }
-
-        .card-b {
-            padding: 18px;
-        }
-
-        .grid2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        @media (max-width: 520px) {
-            .grid2 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        label {
-            display: block;
-            font-size: 12px;
-            color: var(--muted);
-            margin: 0 0 6px;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px 12px;
-            border-radius: 12px;
-            border: 1px solid var(--line);
-            background: rgba(0, 0, 0, .22);
-            color: var(--text);
-            outline: none;
-        }
-
-        textarea {
-            min-height: 92px;
-            resize: vertical
-        }
-
-        .form-row {
-            margin-top: 12px;
-        }
-
-        .form-actions {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 14px;
-        }
-
-        .submit {
-            cursor: pointer;
-            width: 100%;
-            padding: 12px 14px;
-            border-radius: 14px;
-            border: 0;
-            background: linear-gradient(135deg, var(--brand2), #6df2c4);
-            font-weight: 700;
-        }
-
-        .submit:hover {
-            filter: brightness(1.02)
-        }
-
-        .hint {
-            font-size: 12px;
-            color: var(--muted)
-        }
-
-        .note {
-            border-top: 1px solid var(--line);
-            padding: 14px 18px;
-            color: var(--muted);
-            font-size: 12.5px;
-            background: rgba(0, 0, 0, .12);
-        }
-
-        section {
-            margin-top: 44px;
-        }
-
-        .section-title {
-            font-size: 22px;
-            margin: 0 0 14px;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-
-        @media (max-width: 940px) {
-            .features {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .feat {
-            padding: 16px;
-        }
-
-        .feat h3 {
-            margin: 0 0 6px;
-            font-size: 16px;
-        }
-
-        .feat p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-
-        @media (max-width: 940px) {
-            .steps {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .step {
-            padding: 16px;
-        }
-
-        .num {
-            display: inline-flex;
-            width: 30px;
-            height: 30px;
-            border-radius: 10px;
-            align-items: center;
-            justify-content: center;
-            background: rgba(124, 92, 255, .18);
-            border: 1px solid rgba(124, 92, 255, .35);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        footer {
-            margin-top: 52px;
-            color: var(--muted);
-            font-size: 13px;
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .legal a {
-            text-decoration: none;
-            opacity: .9
-        }
-
-        .legal a:hover {
-            text-decoration: underline;
-            opacity: 1
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>youtubaeren</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./output.css" />
 </head>
 
-<body>
-    <div class="wrap">
-        <header>
-            <div class="logo">
-                <span
-                    style="display:inline-flex;width:34px;height:34px;border-radius:12px;align-items:center;justify-content:center;background:rgba(124,92,255,.18);border:1px solid rgba(124,92,255,.35)">▶️</span>
-                <span>ChannelBoost</span>
-                <span class="badge">YouTube Service Test</span>
-            </div>
-            <nav class="nav">
-                <a href="#leistungen">Leistungen</a>
-                <a href="#ablauf">Ablauf</a>
-                <a href="#faq">FAQ</a>
-            </nav>
+<body class="min-h-dvh bg-slate-950 text-slate-100">
+    <main id="app" class="w-full px-8 pb-8 flex flex-col items-center">
+        <header class="text-left pt-36 pb-18 w-full">
+            <h1 class="text-5xl font-semibold tracking-tight sm:text-7xl">
+                AI Agents for Smarter Content Creation
+            </h1>
+            <p class="my-8 text-lg font-medium text-pretty sm:text-xl/8 max-w-[400px]">
+                Our AI agents automate repetitive tasks for Content Creators.
+                This saves time, improves content quality, and helps creators grow faster with data-driven insights.
+            </p>
+            <button type="button"
+                class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">
+                Get started
+            </button>
         </header>
 
-        <div class="hero">
-            <div>
-                <h1 class="h-title">Kostenloser Quick-Check für deinen YouTube-Kanal</h1>
-                <p class="h-sub">
-                    In einem kurzen Test analysieren wir deinen Kanal (Content, Packaging, SEO & Wachstumshebel)
-                    und liefern dir konkrete, umsetzbare Empfehlungen — ohne Bullshit, ohne Verpflichtung.
-                </p>
-
-                <div class="pill-row">
-                    <span class="pill">✓ 5–10 klare Optimierungen</span>
-                    <span class="pill">✓ Fokus: Titel, Thumbnails, Struktur</span>
-                    <span class="pill">✓ Optional: Editing & Strategie</span>
-                    <span class="pill">✓ Antwort innerhalb 48h</span>
+        <div class="productContainer pb-28">
+            <a href="#" class="block max-w-sm p-4 border border-default rounded-base shadow-xs">
+                <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Community Manager</h5>
+                <p class="text-body">AI-powered faster replies and viewer insights</p>
+            </a>
+            <a href="#" class="block max-w-sm p-4 border border-default rounded-base shadow-xs">
+                <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Agentic Cutter</h5>
+                <p class="text-body">Create automatically viral-ready short clips</p>
+            </a>
+            <a href="#" class="block max-w-sm p-4 border border-default rounded-base shadow-xs">
+                <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">AIdea Generator</h5>
+                <p class="text-body">Generate trending and tailored video ideas</p>
+            </a>
+            <a href="#" class="block max-w-sm p-4 border border-default rounded-base shadow-xs">
+                <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">AI Data Analyst</h5>
+                <p class="text-body">AI insights for Social Media growth</p>
+            </a>
+            <a href="#" class="block max-w-sm p-4 border border-default rounded-base shadow-xs">
+                <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Thumbnail Generator</h5>
+                <p class="text-body">Generate Thumbnails in a few seconds</p>
+            </a>
+        </div>
+        <div class="pricingContainer">
+            <div class="w-full max-w-sm p-6 border border-default rounded-base shadow-xs">
+                <h5 class="mb-4 text-xl font-medium text-body">Standard plan</h5>
+                <div class="flex items-baseline text-heading">
+                    <span class="text-5xl font-extrabold tracking-tight">$49</span>
+                    <span class="ms-2 font-medium text-body">/month</span>
                 </div>
-
-                <div class="cta-row">
-                    <a class="btn primary" href="#test">Jetzt kostenlosen Test anfragen</a>
-                    <a class="btn" href="#leistungen">Was ist enthalten?</a>
-                </div>
-                <div class="fine">Hinweis: Wir unterstützen ausschließlich regelkonforme YouTube-Strategien (keine
-                    Fake-Views/Abos).</div>
+                <ul role="list" class="space-y-4 my-6">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">2 team members</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">20GB Cloud storage</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Integration help</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Sketch Files</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">API Access</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Complete documentation</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">24×7 phone & email support</span>
+                    </li>
+                </ul>
+                <button type="button"
+                    class="w-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Choose
+                    plan</button>
             </div>
-
-            <div class="card" id="test">
-                <div class="card-h">
-                    <h2 style="margin:0 0 6px; font-size:18px;">Test anfragen</h2>
-                    <p style="margin:0 0 10px; color:var(--muted); font-size:13.5px;">
-                        Trage kurz die Infos ein — wir melden uns mit einer Mini-Analyse und einem nächsten Schritt.
-                    </p>
+            <div class="w-full max-w-sm p-6 border border-default rounded-base shadow-xs">
+                <h5 class="mb-4 text-xl font-medium text-body">Standard plan</h5>
+                <div class="flex items-baseline text-heading">
+                    <span class="text-5xl font-extrabold tracking-tight">$49</span>
+                    <span class="ms-2 font-medium text-body">/month</span>
                 </div>
-
-                <form class="card-b" id="leadForm">
-                    <div class="grid2">
-                        <div>
-                            <label for="name">Name</label>
-                            <input id="name" name="name" placeholder="Max Mustermann" required />
-                        </div>
-                        <div>
-                            <label for="email">E-Mail</label>
-                            <input id="email" name="email" type="email" placeholder="max@mail.de" required />
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <label for="channel">YouTube-Kanal (Link)</label>
-                        <input id="channel" name="channel" placeholder="https://www.youtube.com/@deinkanal" required />
-                    </div>
-
-                    <div class="grid2 form-row">
-                        <div>
-                            <label for="goal">Ziel</label>
-                            <select id="goal" name="goal" required>
-                                <option value="" selected disabled>Bitte wählen…</option>
-                                <option>Mehr Views (Packaging & SEO)</option>
-                                <option>Mehr Abonnenten (Content Strategy)</option>
-                                <option>Bessere Retention (Editing & Struktur)</option>
-                                <option>Monetarisierung / Positionierung</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="niche">Nische</label>
-                            <input id="niche" name="niche" placeholder="z. B. Fitness, Gaming, Finance…" />
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <label for="msg">Kurzbeschreibung (optional)</label>
-                        <textarea id="msg" name="msg"
-                            placeholder="Was läuft gut, was nervt dich, welche Videos sind wichtig?"></textarea>
-                    </div>
-
-                    <div class="form-actions">
-                        <button class="submit" type="submit">Kostenlosen Test anfragen</button>
-                        <div class="hint">Kein Spam. Abmeldung jederzeit.</div>
-                    </div>
-                </form>
-
-                <div class="note" id="formNote">
-                    Nach dem Absenden öffnet sich dein E-Mail-Programm (oder du bindest später ein echtes
-                    Formular-Backend an).
+                <ul role="list" class="space-y-4 my-6">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">2 team members</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">20GB Cloud storage</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Integration help</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Sketch Files</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">API Access</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Complete documentation</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">24×7 phone & email support</span>
+                    </li>
+                </ul>
+                <button type="button"
+                    class="w-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Choose
+                    plan</button>
+            </div>
+            <div class="w-full max-w-sm p-6 border border-default rounded-base shadow-xs">
+                <h5 class="mb-4 text-xl font-medium text-body">Standard plan</h5>
+                <div class="flex items-baseline text-heading">
+                    <span class="text-5xl font-extrabold tracking-tight">$49</span>
+                    <span class="ms-2 font-medium text-body">/month</span>
                 </div>
+                <ul role="list" class="space-y-4 my-6">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">2 team members</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">20GB Cloud storage</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Integration help</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Sketch Files</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">API Access</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Complete documentation</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">24×7 phone & email support</span>
+                    </li>
+                </ul>
+                <button type="button"
+                    class="w-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Choose
+                    plan</button>
             </div>
         </div>
-
-        <section id="leistungen">
-            <h2 class="section-title">Was im Test enthalten ist</h2>
-            <div class="features">
-                <div class="card feat">
-                    <h3>Packaging-Review</h3>
-                    <p>Titel/Thumbnail-Feedback, Hook-Check, klare Vorschläge für A/B-Varianten.</p>
+        <!-- <div class="w-full border border-default rounded-base shadow-xs max-w-[600px]">
+            <ul class="flex flex-wrap text-sm font-medium text-center text-body border-b border-default rounded-t-base"
+                id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
+                <li class="me-2">
+                    <button id="manage-tab" data-tabs-target="#manage" type="button" role="tab" aria-controls="manage"
+                        aria-selected="true"
+                        class="inline-block p-4 text-fg-brand rounded-ss-base active">Manage</button>
+                </li>
+                <li class="me-2">
+                    <button id="analyze-tab" data-tabs-target="#analyze" type="button" role="tab"
+                        aria-controls="analyze" aria-selected="false"
+                        class="inline-block p-4 hover:text-heading">Analyze</button>
+                </li>
+                <li class="me-2">
+                    <button id="ideas-tab" data-tabs-target="#ideas" type="button" role="tab" aria-controls="ideas"
+                        aria-selected="false" class="inline-block p-4 hover:text-heading">Ideas</button>
+                </li>
+                <li class="me-2">
+                    <button id="cut-tab" data-tabs-target="#cut" type="button" role="tab" aria-controls="cut"
+                        aria-selected="false" class="inline-block p-4 hover:text-heading">Cut</button>
+                </li>
+                <li class="me-2">
+                    <button id="thumbnails-tab" data-tabs-target="#thumbnails" type="button" role="tab"
+                        aria-controls="thumbnails" aria-selected="false"
+                        class="inline-block p-4 hover:text-heading">Thumbnails</button>
+                </li>
+            </ul>
+            <div id="defaultTabContent">
+                <div class="hidden p-4 rounded-b-base md:p-8" id="manage" role="tabpanel" aria-labelledby="manage-tab">
+                    <h2 class="mb-2 text-2xl font-semibold tracking-tight text-heading">Community Management</h2>
+                    <ul role="list" class="mb-4 space-y-4 text-body">
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>One tool. Total community control.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Auto-post for every upload.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Know what viewers want—fast.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Spot trends. Start conversations.</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-flex items-center font-medium text-fg-brand hover:underline">
+                        Learn more
+                        <svg class="w-5 h-5 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 12H5m14 0-4 4m4-4-4-4" />
+                        </svg>
+                    </a>
                 </div>
-                <div class="card feat">
-                    <h3>SEO & Struktur</h3>
-                    <p>Beschreibung/Keywords, Kapitel, Playlists, interne Verlinkung, Upload-Rhythmus.</p>
+                <div class="hidden p-4 rounded-b-base md:p-8" id="analyze" role="tabpanel"
+                    aria-labelledby="analyze-tab">
+                    <h2 class="mb-5 text-2xl font-semibold tracking-tight text-heading">Data analysis</h2>
+                    <ul role="list" class="mb-4 space-y-4 text-body">
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Deep insights into your channel's performance.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Identify growth opportunities.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Optimize content strategy with data-driven decisions.</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-flex items-center font-medium text-fg-brand hover:underline">
+                        Learn more
+                        <svg class="w-5 h-5 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 12H5m14 0-4 4m4-4-4-4" />
+                        </svg>
+                    </a>
                 </div>
-                <div class="card feat">
-                    <h3>Wachstumshebel</h3>
-                    <p>Konkrete nächste Schritte für die nächsten 14 Tage: Ideen, Prioritäten, Roadmap.</p>
+                <div class="hidden p-4 rounded-b-base md:p-8" id="ideas" role="tabpanel" aria-labelledby="ideas-tab">
+                    <h2 class="mb-5 text-2xl font-semibold tracking-tight text-heading">
+                        AI-supported idea generation
+                    </h2>
+                    <ul role="list" class="mb-4 space-y-4 text-body">
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>End creator's block forever.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Get fresh, trending ideas.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Tailored to your niche.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Boost engagement and views.</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-flex items-center font-medium text-fg-brand hover:underline">
+                        Learn more
+                        <svg class="w-5 h-5 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 12H5m14 0-4 4m4-4-4-4" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="hidden p-4 rounded-b-base md:p-8" id="cut" role="tabpanel" aria-labelledby="cut-tab">
+                    <h2 class="mb-5 text-2xl font-semibold tracking-tight text-heading">
+                        AI video cutting
+                    </h2>
+                    <ul role="list" class="mb-4 space-y-4 text-body">
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Create short videos within the blink of an eye.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Let AI extract the most important parts from your longer videos.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Perfect for TikTok, Instagram Reels, YouTube Shorts, and more.</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-flex items-center font-medium text-fg-brand hover:underline">
+                        Learn more
+                        <svg class="w-5 h-5 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 12H5m14 0-4 4m4-4-4-4" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="hidden p-4 rounded-b-base md:p-8" id="thumbnails" role="tabpanel"
+                    aria-labelledby="thumbnails-tab">
+                    <h2 class="mb-5 text-2xl font-semibold tracking-tight text-heading">
+                        AI Thumbnail generation
+                    </h2>
+                    <ul role="list" class="mb-4 space-y-4 text-body">
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Eye-catching thumbnails in seconds.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>AI-powered designs tailored to your content.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Boost click rates effortlessly.</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-flex items-center font-medium text-fg-brand hover:underline">
+                        Learn more
+                        <svg class="w-5 h-5 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 12H5m14 0-4 4m4-4-4-4" />
+                        </svg>
+                    </a>
                 </div>
             </div>
-        </section>
-
-        <section id="ablauf">
-            <h2 class="section-title">So läuft’s ab</h2>
-            <div class="steps">
-                <div class="card step">
-                    <div class="num">1</div>
-                    <h3 style="margin:0 0 6px;">Anfrage</h3>
-                    <p style="margin:0; color:var(--muted);">Du schickst Kanal-Link + Ziel. Dauert 60 Sekunden.</p>
-                </div>
-                <div class="card step">
-                    <div class="num">2</div>
-                    <h3 style="margin:0 0 6px;">Quick-Analyse</h3>
-                    <p style="margin:0; color:var(--muted);">Wir prüfen Kanal, Top-Videos und schnelle Fixes.</p>
-                </div>
-                <div class="card step">
-                    <div class="num">3</div>
-                    <h3 style="margin:0 0 6px;">Ergebnis</h3>
-                    <p style="margin:0; color:var(--muted);">Du bekommst klare Empfehlungen + optionales Angebot.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq">
-            <h2 class="section-title">FAQ</h2>
-            <div class="features">
-                <div class="card feat">
-                    <h3>Kostet das wirklich nichts?</h3>
-                    <p>Der Quick-Check ist kostenlos. Wenn du danach Hilfe willst, machen wir ein optionales Angebot.
-                    </p>
-                </div>
-                <div class="card feat">
-                    <h3>Wie schnell meldet ihr euch?</h3>
-                    <p>In der Regel innerhalb von 48 Stunden (werktags).</p>
-                </div>
-                <div class="card feat">
-                    <h3>Welche Services bietet ihr an?</h3>
-                    <p>Strategie, Thumbnails, Editing-Guidelines, SEO-Optimierung, Content-Planung (regelkonform).</p>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <div>©️ <span id="year"></span> ChannelBoost</div>
-            <div class="legal">
-                <a href="#" onclick="alert('Platzhalter: Impressum/Datenschutz einfügen'); return false;">Impressum</a>
-                ·
-                <a href="#" onclick="alert('Platzhalter: Datenschutz einfügen'); return false;">Datenschutz</a>
-            </div>
-        </footer>
-    </div>
+        </div> -->
+        <footer class="text-xs text-slate-400 fixed bottom-2 left-2">&copy; <span id="year"></span> you2bears</footer>
+    </main>
 
     <script>
-        // Jahr setzen
-        document.getElementById("year").textContent = new Date().getFullYear();
-
-        // Simple "no-backend" Form: öffnet Mail-Client mit vorausgefüllter Anfrage.
-        // Später ersetzen: fetch() zu eurem Backend (z. B. Formspree, Netlify Forms, HubSpot, own API)
-        const form = document.getElementById("leadForm");
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const data = Object.fromEntries(new FormData(form).entries());
-
-            const subject = encodeURIComponent("YouTube Service Test Anfrage");
-            const body = encodeURIComponent(
-                `Name: ${data.name}\n` +
-                `E-Mail: ${data.email}\n` +
-                `Kanal: ${data.channel}\n` +
-                `Ziel: ${data.goal}\n` +
-                `Nische: ${data.niche || "-"}\n\n` +
-                `Beschreibung:\n${data.msg || "-"}\n`
-            );
-
-            // TODO: Zieladresse anpassen
-            const to = "hello@euredomain.de";
-            window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-
-            document.getElementById("formNote").textContent =
-                "Danke! Wenn sich kein Mailfenster geöffnet hat, prüfe bitte deinen Standard-Mailclient oder nutze später ein Formular-Backend.";
-        });
+        document.getElementById('year').textContent = String(new Date().getFullYear());
+        const tabButtons = document.querySelectorAll('#defaultTab button');
+        const tabs = document.querySelectorAll('#defaultTabContent > div');
+        let currentIndex = 0;
+        let btnInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % tabButtons.length;
+            if (currentIndex === 0) {
+                tabButtons[tabButtons.length - 1].classList.remove('active');
+                tabs[tabs.length - 1].classList.add('hidden');
+            }
+            else {
+                tabButtons[currentIndex - 1].classList.remove('active');
+                tabs[currentIndex - 1].classList.add('hidden');
+            }
+            tabButtons[currentIndex].classList.add('active');
+            tabs[currentIndex].classList.remove('hidden');
+        }, 5000);
+        for (let i = 0; i < tabButtons.length; i++) {
+            tabButtons[i].addEventListener('click', () => {
+                clearInterval(btnInterval);
+                tabButtons[currentIndex].classList.remove('active');
+                tabs[currentIndex].classList.add('hidden');
+                currentIndex = i;
+                tabButtons[currentIndex].classList.add('active');
+                tabs[currentIndex].classList.remove('hidden');
+            });
+        }
     </script>
+    <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
 </body>
 
 </html>
