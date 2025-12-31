@@ -258,32 +258,6 @@
 
     <script>
         document.getElementById('year').textContent = String(new Date().getFullYear());
-        const tabButtons = document.querySelectorAll('#defaultTab button');
-        const tabs = document.querySelectorAll('#defaultTabContent > div');
-        let currentIndex = 0;
-        let btnInterval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % tabButtons.length;
-            if (currentIndex === 0) {
-                tabButtons[tabButtons.length - 1].classList.remove('active');
-                tabs[tabs.length - 1].classList.add('hidden');
-            }
-            else {
-                tabButtons[currentIndex - 1].classList.remove('active');
-                tabs[currentIndex - 1].classList.add('hidden');
-            }
-            tabButtons[currentIndex].classList.add('active');
-            tabs[currentIndex].classList.remove('hidden');
-        }, 5000);
-        for (let i = 0; i < tabButtons.length; i++) {
-            tabButtons[i].addEventListener('click', () => {
-                clearInterval(btnInterval);
-                tabButtons[currentIndex].classList.remove('active');
-                tabs[currentIndex].classList.add('hidden');
-                currentIndex = i;
-                tabButtons[currentIndex].classList.add('active');
-                tabs[currentIndex].classList.remove('hidden');
-            });
-        }
     </script>
     <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
 </body>
