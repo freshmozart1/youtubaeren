@@ -5,202 +5,458 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>youtubaeren</title>
-
-    <!-- Tailwind CSS (CDN for quick start). For production, build Tailwind into your CSS. -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Separate CSS file for your custom styles (and/or your built Tailwind output). -->
-    <link rel="stylesheet" href="./styles.css" />
-
-    <!--
-			If you want your *separate* CSS file to include Tailwind via a build step,
-			create styles.css with the following (requires Tailwind build tooling):
-
-				@tailwind base;
-				@tailwind components;
-				@tailwind utilities;
-		-->
-
-    <style>
-        /* Ensure main content stays above the canvas */
-        #app {
-            position: relative;
-            z-index: 1;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./output.css" />
 </head>
 
 <body class="min-h-dvh bg-slate-950 text-slate-100">
-
-    <main id="app" class="mx-auto flex min-h-dvh max-w-6xl flex-col place-items-center gap-12 px-8">
-        <header class="text-center py-24">
-            <h1 class="text-3xl font-bold tracking-tight sm:text-5xl">
-                Are you a content creator?
+    <main id="app" class="w-full px-8 pb-8 flex flex-col items-center">
+        <header class="text-left pt-36 pb-18 w-full">
+            <h1 class="text-5xl font-semibold tracking-tight sm:text-7xl">
+                AI Agents for Smarter Content Creation
             </h1>
-            <p class="mt-3 text-sm text-slate-300 sm:text-base">Great. We'll help you get more views and subscribers.
-                Grow faster with our tools.
+            <p class="my-8 text-lg font-medium text-pretty sm:text-xl/8 max-w-[400px]">
+                Our AI agents automate repetitive tasks for Content Creators.
+                This saves time, improves content quality, and helps creators grow faster with data-driven insights.
             </p>
+            <button type="button"
+                class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">
+                Get started
+            </button>
         </header>
 
-        <div class="flex w-full flex-wrap justify-center gap-8">
-            <section
-                class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.34rem)] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm">
-                <div class="flex h-full flex-col justify-between gap-4">
-                    <div>
-                        <h2 class="text-xl font-semibold tracking-tight text-slate-100">Community Manager</h2>
-                        <div class="mt-3 h-px w-full bg-white/10"></div>
-                        <ul class="mt-4 space-y-2 text-sm text-slate-400">
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>One tool. Total community control.</span>
-                            </li>
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Auto-post for every upload.</span>
-                            </li>
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Know what viewers want—fast.</span>
-                            </li>
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Spot trends. Start conversations.</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <a class="self-center inline-flex w-fit items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950"
-                        href="#">
-                        More info...
-                    </a>
-                </div>
-            </section>
-
-            <section
-                class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.34rem)] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm">
-                <div class="flex h-full flex-col justify-between gap-4">
-                    <div>
-                        <h2 class="text-xl font-semibold tracking-tight text-slate-100">AI Video Idea Generator</h2>
-                        <div class="mt-3 h-px w-full bg-white/10"></div>
-                        <ul class="mt-4 space-y-2 text-sm text-slate-400">
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>End creator's block forever.</span>
-                            </li>
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Get fresh, trending ideas.</span>
-                            </li>
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Tailored to your niche.</span>
-                            </li>
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Boost engagement and views.</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <a class="self-center inline-flex w-fit items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950"
-                        href="#">
-                        More info...
-                    </a>
-                </div>
-            </section>
-
-            <section
-                class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.34rem)] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm">
-                <div class="flex h-full flex-col justify-between gap-4">
-                    <div>
-                        <h2 class="text-xl font-semibold tracking-tight text-slate-100">Agentic Cutter</h2>
-                        <div class="mt-3 h-px w-full bg-white/10"></div>
-                        <ul class="mt-4 space-y-2 text-sm text-slate-400">
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Create short videos within the blink of an eye.</span>
-                            </li>
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Let AI extract the most important parts from your longer videos.</span>
-                            </li>
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Perfect for TikTok, Instagram Reels, YouTube Shorts, and more.</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <a class="self-center inline-flex w-fit items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950"
-                        href="#">
-                        More info...
-                    </a>
-                </div>
-            </section>
-
-            <section
-                class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.34rem)] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm">
-                <div class="flex h-full flex-col justify-between gap-4">
-                    <div>
-                        <h2 class="text-xl font-semibold tracking-tight text-slate-100">Thumbnail Generator</h2>
-                        <div class="mt-3 h-px w-full bg-white/10"></div>
-                        <ul class="mt-4 space-y-2 text-sm text-slate-400">
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Eye-catching thumbnails in seconds.</span>
-                            </li>
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>AI-powered designs tailored to your content.</span>
-                            </li>
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Boost click rates effortlessly.</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <a class="self-center inline-flex w-fit items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950"
-                        href="#">
-                        More info...
-                    </a>
-                </div>
-            </section>
-
-            <section
-                class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.34rem)] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm">
-                <div class="flex h-full flex-col justify-between gap-4">
-                    <div>
-                        <h2 class="text-xl font-semibold tracking-tight text-slate-100">Data Analyst</h2>
-                        <div class="mt-3 h-px w-full bg-white/10"></div>
-                        <ul class="mt-4 space-y-2 text-sm text-slate-400">
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Deep insights into your channel's performance.</span>
-                            </li>
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Identify growth opportunities.</span>
-                            </li>
-                            <li class="flex gap-2">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
-                                <span>Optimize content strategy with data-driven decisions.</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <a class="self-center inline-flex w-fit items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950"
-                        href="#">
-                        More info...
-                    </a>
-                </div>
-            </section>
+        <div class="productContainer pb-28">
+            <a href="#" class="block max-w-sm p-4 border border-default rounded-base shadow-xs">
+                <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Community Manager</h5>
+                <p class="text-body">AI-powered faster replies and viewer insights</p>
+            </a>
+            <a href="#" class="block max-w-sm p-4 border border-default rounded-base shadow-xs">
+                <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Agentic Cutter</h5>
+                <p class="text-body">Create automatically viral-ready short clips</p>
+            </a>
+            <a href="#" class="block max-w-sm p-4 border border-default rounded-base shadow-xs">
+                <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">AIdea Generator</h5>
+                <p class="text-body">Generate trending and tailored video ideas</p>
+            </a>
+            <a href="#" class="block max-w-sm p-4 border border-default rounded-base shadow-xs">
+                <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">AI Data Analyst</h5>
+                <p class="text-body">AI insights for Social Media growth</p>
+            </a>
+            <a href="#" class="block max-w-sm p-4 border border-default rounded-base shadow-xs">
+                <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Thumbnail Generator</h5>
+                <p class="text-body">Generate Thumbnails in a few seconds</p>
+            </a>
         </div>
-
-        <footer class="text-xs text-slate-400">&copy; <span id="year"></span> you2bears</footer>
+        <div class="pricingContainer">
+            <div class="w-full max-w-sm p-6 border border-default rounded-base shadow-xs">
+                <h5 class="mb-4 text-xl font-medium text-body">Standard plan</h5>
+                <div class="flex items-baseline text-heading">
+                    <span class="text-5xl font-extrabold tracking-tight">$49</span>
+                    <span class="ms-2 font-medium text-body">/month</span>
+                </div>
+                <ul role="list" class="space-y-4 my-6">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">2 team members</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">20GB Cloud storage</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Integration help</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Sketch Files</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">API Access</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Complete documentation</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">24×7 phone & email support</span>
+                    </li>
+                </ul>
+                <button type="button"
+                    class="w-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Choose
+                    plan</button>
+            </div>
+            <div class="w-full max-w-sm p-6 border border-default rounded-base shadow-xs">
+                <h5 class="mb-4 text-xl font-medium text-body">Standard plan</h5>
+                <div class="flex items-baseline text-heading">
+                    <span class="text-5xl font-extrabold tracking-tight">$49</span>
+                    <span class="ms-2 font-medium text-body">/month</span>
+                </div>
+                <ul role="list" class="space-y-4 my-6">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">2 team members</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">20GB Cloud storage</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Integration help</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Sketch Files</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">API Access</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Complete documentation</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">24×7 phone & email support</span>
+                    </li>
+                </ul>
+                <button type="button"
+                    class="w-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Choose
+                    plan</button>
+            </div>
+            <div class="w-full max-w-sm p-6 border border-default rounded-base shadow-xs">
+                <h5 class="mb-4 text-xl font-medium text-body">Standard plan</h5>
+                <div class="flex items-baseline text-heading">
+                    <span class="text-5xl font-extrabold tracking-tight">$49</span>
+                    <span class="ms-2 font-medium text-body">/month</span>
+                </div>
+                <ul role="list" class="space-y-4 my-6">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">2 team members</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">20GB Cloud storage</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Integration help</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Sketch Files</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">API Access</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">Complete documentation</span>
+                    </li>
+                    <li class="flex items-center line-through decoration-body">
+                        <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-body">24×7 phone & email support</span>
+                    </li>
+                </ul>
+                <button type="button"
+                    class="w-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Choose
+                    plan</button>
+            </div>
+        </div>
+        <!-- <div class="w-full border border-default rounded-base shadow-xs max-w-[600px]">
+            <ul class="flex flex-wrap text-sm font-medium text-center text-body border-b border-default rounded-t-base"
+                id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
+                <li class="me-2">
+                    <button id="manage-tab" data-tabs-target="#manage" type="button" role="tab" aria-controls="manage"
+                        aria-selected="true"
+                        class="inline-block p-4 text-fg-brand rounded-ss-base active">Manage</button>
+                </li>
+                <li class="me-2">
+                    <button id="analyze-tab" data-tabs-target="#analyze" type="button" role="tab"
+                        aria-controls="analyze" aria-selected="false"
+                        class="inline-block p-4 hover:text-heading">Analyze</button>
+                </li>
+                <li class="me-2">
+                    <button id="ideas-tab" data-tabs-target="#ideas" type="button" role="tab" aria-controls="ideas"
+                        aria-selected="false" class="inline-block p-4 hover:text-heading">Ideas</button>
+                </li>
+                <li class="me-2">
+                    <button id="cut-tab" data-tabs-target="#cut" type="button" role="tab" aria-controls="cut"
+                        aria-selected="false" class="inline-block p-4 hover:text-heading">Cut</button>
+                </li>
+                <li class="me-2">
+                    <button id="thumbnails-tab" data-tabs-target="#thumbnails" type="button" role="tab"
+                        aria-controls="thumbnails" aria-selected="false"
+                        class="inline-block p-4 hover:text-heading">Thumbnails</button>
+                </li>
+            </ul>
+            <div id="defaultTabContent">
+                <div class="hidden p-4 rounded-b-base md:p-8" id="manage" role="tabpanel" aria-labelledby="manage-tab">
+                    <h2 class="mb-2 text-2xl font-semibold tracking-tight text-heading">Community Management</h2>
+                    <ul role="list" class="mb-4 space-y-4 text-body">
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>One tool. Total community control.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Auto-post for every upload.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Know what viewers want—fast.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Spot trends. Start conversations.</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-flex items-center font-medium text-fg-brand hover:underline">
+                        Learn more
+                        <svg class="w-5 h-5 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 12H5m14 0-4 4m4-4-4-4" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="hidden p-4 rounded-b-base md:p-8" id="analyze" role="tabpanel"
+                    aria-labelledby="analyze-tab">
+                    <h2 class="mb-5 text-2xl font-semibold tracking-tight text-heading">Data analysis</h2>
+                    <ul role="list" class="mb-4 space-y-4 text-body">
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Deep insights into your channel's performance.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Identify growth opportunities.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Optimize content strategy with data-driven decisions.</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-flex items-center font-medium text-fg-brand hover:underline">
+                        Learn more
+                        <svg class="w-5 h-5 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 12H5m14 0-4 4m4-4-4-4" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="hidden p-4 rounded-b-base md:p-8" id="ideas" role="tabpanel" aria-labelledby="ideas-tab">
+                    <h2 class="mb-5 text-2xl font-semibold tracking-tight text-heading">
+                        AI-supported idea generation
+                    </h2>
+                    <ul role="list" class="mb-4 space-y-4 text-body">
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>End creator's block forever.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Get fresh, trending ideas.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Tailored to your niche.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Boost engagement and views.</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-flex items-center font-medium text-fg-brand hover:underline">
+                        Learn more
+                        <svg class="w-5 h-5 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 12H5m14 0-4 4m4-4-4-4" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="hidden p-4 rounded-b-base md:p-8" id="cut" role="tabpanel" aria-labelledby="cut-tab">
+                    <h2 class="mb-5 text-2xl font-semibold tracking-tight text-heading">
+                        AI video cutting
+                    </h2>
+                    <ul role="list" class="mb-4 space-y-4 text-body">
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Create short videos within the blink of an eye.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Let AI extract the most important parts from your longer videos.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Perfect for TikTok, Instagram Reels, YouTube Shorts, and more.</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-flex items-center font-medium text-fg-brand hover:underline">
+                        Learn more
+                        <svg class="w-5 h-5 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 12H5m14 0-4 4m4-4-4-4" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="hidden p-4 rounded-b-base md:p-8" id="thumbnails" role="tabpanel"
+                    aria-labelledby="thumbnails-tab">
+                    <h2 class="mb-5 text-2xl font-semibold tracking-tight text-heading">
+                        AI Thumbnail generation
+                    </h2>
+                    <ul role="list" class="mb-4 space-y-4 text-body">
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Eye-catching thumbnails in seconds.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>AI-powered designs tailored to your content.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400/90"></span>
+                            <span>Boost click rates effortlessly.</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-flex items-center font-medium text-fg-brand hover:underline">
+                        Learn more
+                        <svg class="w-5 h-5 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 12H5m14 0-4 4m4-4-4-4" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div> -->
+        <footer class="text-xs text-slate-400 fixed bottom-2 left-2">&copy; <span id="year"></span> you2bears</footer>
     </main>
 
     <script>
         document.getElementById('year').textContent = String(new Date().getFullYear());
+        const tabButtons = document.querySelectorAll('#defaultTab button');
+        const tabs = document.querySelectorAll('#defaultTabContent > div');
+        let currentIndex = 0;
+        let btnInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % tabButtons.length;
+            if (currentIndex === 0) {
+                tabButtons[tabButtons.length - 1].classList.remove('active');
+                tabs[tabs.length - 1].classList.add('hidden');
+            }
+            else {
+                tabButtons[currentIndex - 1].classList.remove('active');
+                tabs[currentIndex - 1].classList.add('hidden');
+            }
+            tabButtons[currentIndex].classList.add('active');
+            tabs[currentIndex].classList.remove('hidden');
+        }, 5000);
+        for (let i = 0; i < tabButtons.length; i++) {
+            tabButtons[i].addEventListener('click', () => {
+                clearInterval(btnInterval);
+                tabButtons[currentIndex].classList.remove('active');
+                tabs[currentIndex].classList.add('hidden');
+                currentIndex = i;
+                tabButtons[currentIndex].classList.add('active');
+                tabs[currentIndex].classList.remove('hidden');
+            });
+        }
     </script>
+    <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
 </body>
 
 </html>

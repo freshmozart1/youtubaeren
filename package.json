@@ -1,0 +1,26 @@
+{
+  "name": "youtubaeren",
+  "version": "1.0.0",
+  "description": "Landing page for Youtubaeren",
+  "homepage": "https://github.com/freshmozart1/youtubaeren#readme",
+  "bugs": {
+    "url": "https://github.com/freshmozart1/youtubaeren/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freshmozart1/youtubaeren.git"
+  },
+  "license": "ISC",
+  "author": "freshmozart1",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx @tailwindcss/cli -i ./styles.css -o ./output.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "flowbite": "^4.0.1",
+    "tailwindcss": "^4.1.18"
+  }
+}
