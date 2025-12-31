@@ -1,0 +1,86 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import "flowbite/src/themes/minimal";
+
+@plugin "flowbite/plugin";
+@source "./node_modules/flowbite";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme {
+    /* main text color */
+    --color-body: rgb(196, 187, 211);
+    --color-body-subtle: rgb(216, 210, 225);
+
+    /* text heading colors */
+    --color-heading: rgb(124, 101, 161);
+
+    /* used for custom brand colors */
+    --color-fg-brand-subtle: rgb(216, 210, 225);
+    --color-fg-brand: rgb(196, 187, 211);
+    --color-fg-brand-strong: rgb(156, 143, 181);
+}
+
+#app>header {
+    >h1 {
+        background-image: linear-gradient(180deg, #ffffff1a, #0003 58%), linear-gradient(140deg, #fff, rgb(124, 101, 161));
+        background-clip: text;
+        letter-spacing: -0.02em;
+        transform: translate(0px, 0px);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    >p {
+        color: rgb(196, 187, 211);
+    }
+}
+
+div.productContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+
+    >* {
+        flex: auto 1 100%;
+    }
+}
+
+div.pricingContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+
+    >* {
+        flex: auto 1 250px;
+    }
+}
+
+/* #defaultTabContent {
+    display: grid;
+    grid-template-areas: "stack";
+
+    >div {
+        display: block;
+        grid-area: stack;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    >div.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+#defaultTab {
+    button.active {
+        border-bottom-color: rgb(124, 101, 161);
+        color: rgb(124, 101, 161);
+    }
+} */
