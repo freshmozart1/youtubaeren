@@ -61,26 +61,3 @@ div.pricingContainer {
         flex: auto 1 250px;
     }
 }
-
-/* #defaultTabContent {
-    display: grid;
-    grid-template-areas: "stack";
-
-    >div {
-        display: block;
-        grid-area: stack;
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    >div.hidden {
-        opacity: 0;
-        pointer-events: none;
-    }
-}
-
-#defaultTab {
-    button.active {
-        border-bottom-color: rgb(124, 101, 161);
-        color: rgb(124, 101, 161);
-    }
-} */
