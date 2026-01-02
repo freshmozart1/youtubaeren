@@ -2522,6 +2522,17 @@ div.productContainer {
       >p {
         grid-area: var(--position);
       }
+      >img {
+        opacity: 0;
+        transition: opacity .3s ease;
+        border-radius: 8px;
+      }
+      &.active {
+        >img {
+          opacity: 1;
+          grid-area: img;
+        }
+      }
     }
   }
 }

@@ -26,9 +26,9 @@
         </header>
 
         <div class="productContainer w-full mb-28">
-            <div class="overflow-hidden border border-default rounded-base shadow-xs grid gap-x-4">
+            <div class="overflow-hidden border border-default rounded-base shadow-xs grid gap-x-4 active">
                 <div class="flex justify-start items-end" style="--position: a1">
-                    <a href="#" class="text-2xl font-semibold tracking-tight text-heading leading-8">
+                    <a class="text-2xl font-semibold tracking-tight text-heading leading-8">
                         Community Manager
                     </a>
                 </div>
@@ -37,7 +37,7 @@
             </div>
             <div class="overflow-hidden border border-default rounded-base shadow-xs grid gap-x-4">
                 <div class="flex justify-start items-end" style="--position: b1">
-                    <a href="#" class="text-2xl font-semibold tracking-tight text-heading leading-8">
+                    <a class="text-2xl font-semibold tracking-tight text-heading leading-8">
                         Agentic Cutter
                     </a>
                 </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="overflow-hidden border border-default rounded-base shadow-xs grid gap-x-4">
                 <div class="flex justify-start items-end" style="--position: c1">
-                    <a href="#" class="text-2xl font-semibold tracking-tight text-heading leading-8">
+                    <a class="text-2xl font-semibold tracking-tight text-heading leading-8">
                         AIdea Generator
                     </a>
                 </div>
@@ -55,7 +55,7 @@
             </div>
             <div class="overflow-hidden border border-default rounded-base shadow-xs grid gap-x-4">
                 <div class="flex justify-start items-end" style="--position: d1">
-                    <a href="#" class="text-2xl font-semibold tracking-tight text-heading leading-8">
+                    <a class="text-2xl font-semibold tracking-tight text-heading leading-8">
                         AI Data Analyst
                     </a>
                 </div>
@@ -64,7 +64,7 @@
             </div>
             <div class="overflow-hidden border border-default rounded-base shadow-xs grid gap-x-4">
                 <div class="flex justify-start items-end" style="--position: e1">
-                    <a href="#" class="text-2xl font-semibold tracking-tight text-heading leading-8">
+                    <a class="text-2xl font-semibold tracking-tight text-heading leading-8">
                         Thumbnail Generator
                     </a>
                 </div>
@@ -307,6 +307,19 @@
 
     <script>
         document.getElementById('year').textContent = String(new Date().getFullYear());
+        function addActiveClassEventListener() {
+            if (window.innerWidth >= 1050) {
+                const cards = document.querySelectorAll('div.productContainer > div');
+                cards.forEach((card) => {
+                    card.addEventListener('click', () => {
+                        cards.forEach((c) => c.classList.remove('active'));
+                        card.classList.add('active');
+                    });
+                });
+            }
+        }
+        window.onresize = addActiveClassEventListener;
+        window.onload = addActiveClassEventListener;
     </script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 </body>
