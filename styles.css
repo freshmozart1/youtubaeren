@@ -39,14 +39,73 @@
 }
 
 div.productContainer {
-    width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 1.5rem;
-    justify-content: center;
 
-    >* {
-        flex: auto 1 100%;
+    >div {
+        grid-template-areas:
+            "h img"
+            "p img"
+        ;
+        grid-template-columns: 1fr 2fr;
+
+        >div {
+            grid-area: h;
+
+        }
+
+        >p {
+            grid-area: p;
+        }
+
+        >img {
+            grid-area: img;
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+@media screen and (min-width: 1050px) {
+    div.productContainer {
+        display: grid;
+        gap: 0;
+        column-gap: 1.5rem;
+        grid-template-areas:
+            "a1 b1 c1 d1 e1"
+            "a2 b2 c2 d2 e2"
+            ". . . . ."
+            "img img img img img"
+        ;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 64px 48px 1.5rem auto;
+
+        >div {
+            display: contents;
+
+            >div {
+                grid-area: var(--position);
+            }
+
+            >p {
+                grid-area: var(--position);
+            }
+
+            >img {
+                opacity: 0;
+                transition: opacity .3s ease;
+                border-radius: 8px;
+            }
+
+            &.active {
+                >img {
+                    opacity: 1;
+                    grid-area: img;
+                }
+            }
+        }
     }
 }
 
@@ -61,26 +120,3 @@ div.pricingContainer {
         flex: auto 1 250px;
     }
 }
-
-/* #defaultTabContent {
-    display: grid;
-    grid-template-areas: "stack";
-
-    >div {
-        display: block;
-        grid-area: stack;
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    >div.hidden {
-        opacity: 0;
-        pointer-events: none;
-    }
-}
-
-#defaultTab {
-    button.active {
-        border-bottom-color: rgb(124, 101, 161);
-        color: rgb(124, 101, 161);
-    }
-} */
