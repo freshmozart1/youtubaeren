@@ -1141,9 +1141,6 @@
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
-  .mb-3 {
-    margin-bottom: calc(var(--spacing) * 3);
-  }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
   }
@@ -1869,9 +1866,6 @@
   .pb-18 {
     padding-bottom: calc(var(--spacing) * 18);
   }
-  .pb-28 {
-    padding-bottom: calc(var(--spacing) * 28);
-  }
   .datatable-empty {
     .datatable-wrapper .datatable-table & {
       text-align: center;
@@ -1882,10 +1876,6 @@
   }
   .text-left {
     text-align: left;
-  }
-  .text-2xl {
-    font-size: var(--text-2xl);
-    line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
   .text-5xl {
     font-size: var(--text-5xl);
@@ -2472,6 +2462,16 @@
   --color-dark-subtle: var(--color-stone-700);
   --color-dark-backdrop: var(--color-stone-950);
 }
+@property --gradient-x {
+  syntax: '<percentage>';
+  initial-value: 50%;
+  inherits: false;
+}
+@property --gradient-y {
+  syntax: '<percentage>';
+  initial-value: 50%;
+  inherits: false;
+}
 #app>header {
   >h1 {
     background-image: linear-gradient(180deg, #ffffff1a, #0003 58%), linear-gradient(140deg, #fff, rgb(124, 101, 161));
@@ -2489,6 +2489,8 @@ div.productContainer {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
   >div {
     grid-template-areas: "h img" "p img";
     grid-template-columns: 1fr 2fr;
@@ -2508,29 +2510,37 @@ div.productContainer {
 }
 @media screen and (min-width: 1050px) {
   div.productContainer {
+    --gradient-x: 50%;
+    --gradient-y: 50%;
     display: grid;
     gap: 0;
-    column-gap: 1.5rem;
-    grid-template-areas: "a1 b1 c1 d1 e1" "a2 b2 c2 d2 e2" ". . . . ." "img img img img img";
+    border-radius: 8px;
+    overflow: hidden;
+    transition: --gradient-x 0.03s ease, --gradient-y 0.03s ease;
+    grid-template-areas: "a1 b1 c1 d1 e1" "a2 b2 c2 d2 e2" "img img img img img";
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 64px 48px 1.5rem auto;
+    grid-template-rows: auto auto auto;
+    background-image: radial-gradient(circle at var(--gradient-x) var(--gradient-y), #fff 0%, rgb(124, 101, 161) 20%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     >div {
       display: contents;
       >div {
         grid-area: var(--position);
+        padding: .75rem .75rem 0 .75rem;
       }
       >p {
         grid-area: var(--position);
+        padding: 0 .75rem .75rem .75rem;
       }
       >img {
         opacity: 0;
         transition: opacity .3s ease;
-        border-radius: 8px;
       }
       &.active {
         >img {
           opacity: 1;
-          grid-area: img;
         }
       }
     }
@@ -3274,6 +3284,8 @@ div.pricingContainer {
       --tw-drop-shadow-alpha: 100%;
       --tw-drop-shadow-size: initial;
       --tw-ease: initial;
+      --gradient-x: 50%;
+      --gradient-y: 50%;
     }
   }
 }
